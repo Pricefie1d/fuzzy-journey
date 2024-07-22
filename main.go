@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -149,7 +150,7 @@ func (w Walking) Calories() float64 {
 	// вставьте ваш код ниже
 	hours := w.Duration.Hours()
 	speedMsec := w.meanSpeed() * KmHInMsec
-	calories := ((CaloriesWeightMultiplier * w.Weight) + ((speedMsec * speedMsec) / (w.Height / CmInM) * CaloriesSpeedHeightMultiplier)) * w.Weight * hours
+	calories := ((CaloriesWeightMultiplier * w.Weight) + ((math.Pow(speedMsec, 2) / CmInM) * CaloriesSpeedHeightMultiplier * w.Weight)) * hours * MinInHours
 	return calories
 }
 
