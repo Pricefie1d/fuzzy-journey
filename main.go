@@ -115,15 +115,12 @@ func (r Running) Calories() float64 {
 // Это переопределенный метод TrainingInfo() из Training.
 func (r Running) TrainingInfo() InfoMessage {
 	// вставьте ваш код ниже
-	distance := r.distance()
-	speed := r.meanSpeed()
-	calories := r.Calories()
 	return InfoMessage{
 		TrainingType: r.TrainingType,
 		Duration:     r.Duration.Minutes(),
-		Distance:     distance,
-		Speed:        speed,
-		Calories:     calories,
+		Distance:     r.distance(),
+		Speed:        r.meanSpeed(),
+		Calories:     r.Calories(),
 	}
 }
 
@@ -158,15 +155,12 @@ func (w Walking) Calories() float64 {
 // Это переопределенный метод TrainingInfo() из Training.
 func (w Walking) TrainingInfo() InfoMessage {
 	// вставьте ваш код ниже
-	distance := w.distance()
-	speed := w.meanSpeed()
-	calories := w.Calories()
 	return InfoMessage{
 		TrainingType: w.TrainingType,
 		Duration:     w.Duration.Minutes(),
-		Distance:     distance,
-		Speed:        speed,
-		Calories:     calories,
+		Distance:     w.distance(),
+		Speed:        w.meanSpeed(),
+		Calories:     w.Calories(),
 	}
 }
 
