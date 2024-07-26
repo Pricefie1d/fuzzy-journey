@@ -141,7 +141,10 @@ func (w Walking) Calories() float64 {
 	// вставьте ваш код ниже
 	hours := w.Duration.Hours()
 	speedMsec := w.meanSpeed() * KmHInMsec
-	calories := ((CaloriesWeightMultiplier * w.Weight) + ((math.Pow(speedMsec, 2) / CmInM) * CaloriesSpeedHeightMultiplier * w.Weight)) * hours * MinInHours
+	if w.Height == 0 {
+		return 0
+	}
+	calories := ((CaloriesWeightMultiplier * w.Weight) + ((math.Pow(speedMsec, 2) / w.Height / CmInM) * CaloriesSpeedHeightMultiplier * w.Weight)) * hours * MinInHours
 	return calories
 }
 
